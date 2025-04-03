@@ -1,9 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './GitTerminal.css';
 
 const GitTerminal = ({ onCommand }) => {
   const [command, setCommand] = useState('');
   const [output, setOutput] = useState([]);
+
+  // Display help message when component first loads
+  useEffect(() => {
+    setOutput([
+      { 
+        command: 'help',
+        output: `Welcome to the GetGud@Git Terminal!
+        
+You can use standard git commands with or without the 'git' prefix:
+- 'git init' or just 'init'
+- 'git add .' or just 'add .'
+- 'git commit -m "message"' or just 'commit -m "message"'
+- 'git branch branch-name' or just 'branch branch-name'
+- 'git checkout branch-name' or just 'checkout branch-name'
+- 'git merge branch-name' or just 'merge branch-name'
+
+Try it out!`
+      }
+    ]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +59,7 @@ const GitTerminal = ({ onCommand }) => {
           type="text"
           value={command}
           onChange={(e) => setCommand(e.target.value)}
-          placeholder="Enter git command..."
+          placeholder="Type git commands (e.g., git add, git commit -m 'message')"
           className="command-input"
         />
       </form>

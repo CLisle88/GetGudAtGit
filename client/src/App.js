@@ -48,8 +48,19 @@ function App() {
 
   const handleGitCommand = async (command) => {
     try {
-      // Extract the Git command (e.g., "init", "add", "commit") from the full command string
-      const gitCmd = command.split(' ')[0].trim();
+      // Check if the command starts with "git" and extract the actual git command
+      let commandParts = command.trim().split(' ');
+      let gitCmd, commandParams;
+      
+      // Handle both formats: "git add" and just "add"
+      if (commandParts[0].toLowerCase() === 'git' && commandParts.length > 1) {
+        gitCmd = commandParts[1].toLowerCase();
+        commandParams = commandParts.slice(2).join(' ');
+      } else {
+        gitCmd = commandParts[0].toLowerCase();
+        commandParams = commandParts.slice(1).join(' ');
+      }
+      
       let apiEndpoint = '';
       let requestBody = {};
       
@@ -59,29 +70,26 @@ function App() {
           break;
         case 'add':
           apiEndpoint = 'add';
-          const files = command.substring(4).trim();
-          requestBody = { files: files || '.' };
+          requestBody = { files: commandParams || '.' };
           break;
         case 'commit':
           apiEndpoint = 'commit';
           // Extract commit message - support both -m "message" and -m message formats
-          const msgMatch = command.match(/-m\s*(?:"([^"]*)"|'([^']*)'|([^\s]*))/);
+          const msgMatch = commandParams.match(/-m\s*(?:"([^"]*)"|'([^']*)'|([^\s]*))/);
           const message = msgMatch ? (msgMatch[1] || msgMatch[2] || msgMatch[3]) : 'Commit';
           requestBody = { message };
           break;
         case 'branch':
           apiEndpoint = 'branch';
           // Extract branch name
-          const branchName = command.substring(7).trim();
-          requestBody = { name: branchName };
+          requestBody = { name: commandParams };
           break;
         case 'checkout':
           apiEndpoint = 'checkout';
           // Extract branch name or options
-          const options = command.substring(9).trim();
-          if (options.startsWith('-b ')) {
+          if (commandParams.startsWith('-b ')) {
             // Creating a new branch and switching to it
-            const newBranch = options.substring(3).trim();
+            const newBranch = commandParams.substring(3).trim();
             await fetch(`http://localhost:5000/api/branch`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -101,20 +109,19 @@ function App() {
             setCurrentBranch(newBranch);
           } else {
             // Just switching to an existing branch
-            requestBody = { branch: options };
-            setCurrentBranch(options);
+            requestBody = { branch: commandParams };
+            setCurrentBranch(commandParams);
           }
           break;
         case 'merge':
           apiEndpoint = 'merge';
           // Extract branch to merge
-          const mergeBranch = command.substring(6).trim();
-          requestBody = { branch: mergeBranch };
+          requestBody = { branch: commandParams };
           
           // Update branch visualization to show merge
           const newBranches = [...gitBranches];
           const currentIndex = newBranches.findIndex(b => b.name === currentBranch);
-          const mergeFromIndex = newBranches.findIndex(b => b.name === mergeBranch);
+          const mergeFromIndex = newBranches.findIndex(b => b.name === commandParams);
           
           if (currentIndex !== -1 && mergeFromIndex !== -1) {
             const position = newBranches[currentIndex].commits.length > 0 
@@ -122,7 +129,7 @@ function App() {
               : 1;
               
             newBranches[currentIndex].merges.push({
-              from: mergeBranch,
+              from: commandParams,
               to: currentBranch,
               position
             });
