@@ -1,0 +1,82 @@
+.workflow-guide {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.guide-header {
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.guide-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.workflow-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.workflow-tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-right: 1px solid #ddd;
+  font-weight: 500;
+}
+
+.workflow-tab.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.workflow-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.workflow-content h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #333;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.workflow-description {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.workflow-diagram {
+  background-color: #f5f5f5;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+}
+
+.workflow-diagram pre {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  color: #333;
+  line-height: 1.4;
+}
+
+.workflow-explanation {
+  line-height: 1.6;
+  white-space: pre-line;
+} 

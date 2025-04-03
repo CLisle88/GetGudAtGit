@@ -1,0 +1,61 @@
+.file-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  position: relative;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.editor-header h3 {
+  margin: 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.file-icon {
+  margin-right: 8px;
+}
+
+.file-name {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+}
+
+.save-button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+.editor-content {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  resize: none;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.editor-content:focus {
+  outline: none;
+} 

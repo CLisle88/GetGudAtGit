@@ -1,0 +1,82 @@
+.quick-access-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.panel-toggles {
+  display: flex;
+  gap: 5px;
+}
+
+.panel-toggle {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.panel-toggle:hover {
+  background-color: #f0f9f0;
+  border-color: #4CAF50;
+}
+
+.panel-toggle.active {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.panel-content {
+  position: relative;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 90vw;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.close-panel {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-panel:hover {
+  color: #f44336;
+}
+
+.compact-panel {
+  height: 100%;
+  max-height: 600px;
+}
+
+@media (max-width: 768px) {
+  .panel-content {
+    width: 95vw;
+    max-height: 70vh;
+  }
+  
+  .panel-toggle {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+} 

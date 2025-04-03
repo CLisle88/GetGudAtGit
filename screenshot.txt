@@ -1,0 +1,14 @@
+This is a placeholder for a screenshot of the application.
+
+To add a screenshot:
+1. Take a screenshot of your GetGud@Git application in action
+2. Save it as "screenshot.png" in the root directory
+3. Replace this text file with the PNG image
+
+A good screenshot would show:
+- The editor with some code
+- The branch visualization
+- The tutorial panel
+- The terminal with some Git commands
+
+This will help make your GitHub repository more appealing and informative to potential users. 

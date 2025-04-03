@@ -1,0 +1,107 @@
+.welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.welcome-modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.welcome-content {
+  padding: 40px;
+}
+
+.welcome-step {
+  text-align: center;
+  min-height: 200px;
+}
+
+.welcome-step h2 {
+  color: #4CAF50;
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.welcome-step p {
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.welcome-dots {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.welcome-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.welcome-dot.active {
+  background-color: #4CAF50;
+}
+
+.welcome-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.welcome-prev, .welcome-next {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.welcome-prev {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.welcome-next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.welcome-prev:hover {
+  background-color: #e5e5e5;
+}
+
+.welcome-next:hover {
+  background-color: #45a049;
+} 
